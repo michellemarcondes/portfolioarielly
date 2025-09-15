@@ -9,7 +9,7 @@ const Header = () => {
     <header className="w-full h-[80px] bg-[#e8f5ff] border-b border-[#c3e3fd]">
       <Container className="h-full flex items-center justify-between">
         <div className="flex items-center">
-          <img src="public/logo.png" alt="Logo" className="h-[40px] w-auto ml-10" />
+          <img src="logo.png" alt="Logo" className="h-[60px] w-auto ml-10" />
         </div>
         <nav className="flex items-center">
           <a href="#home" className="text-[#0b2e55] text-lg font-medium mx-6">Home</a>
@@ -44,8 +44,8 @@ const Hero = () => {
         <div className="relative flex items-center justify-center">
           <div className="relative">
             <img src="/images/photo.jpg" alt="Foto" className="w-[320px] h-[320px] rounded-full object-cover mx-auto md:w-[240px] md:h-[240px]" />
-            <img src="/images/decor-1.png" alt="Decor 1" className="w-8 h-8 absolute -top-10 -right-[60px]" />
-            <img src="/images/decor-2.png" alt="Decor 2" className="w-6 h-6 absolute -bottom-[30px] -left-[80px]" />
+            <img src="/estrelinha.png" alt="Decor 1" className="w-8 h-8 absolute -top-10 -right-[60px]" />
+            <img src="/iconlistras.png" alt="Decor 2" className="w-6 h-6 absolute -bottom-[30px] -left-[80px]" />
           </div>
         </div>
       </Container>
