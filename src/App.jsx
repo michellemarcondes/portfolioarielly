@@ -9,7 +9,7 @@ const Header = () => {
     <header className="w-full h-[80px] bg-[#e8f5ff] border-b border-[#c3e3fd]">
       <Container className="h-full flex items-center justify-between">
         <div className="flex items-center">
-          <img src="/logo.png" alt="Logo" className="h-[40px] w-auto ml-10" />
+          <img src="public/logo.png" alt="Logo" className="h-[40px] w-auto ml-10" />
         </div>
         <nav className="flex items-center">
           <a href="#home" className="text-[#0b2e55] text-lg font-medium mx-6">Home</a>
