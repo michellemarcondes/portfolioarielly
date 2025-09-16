@@ -23,7 +23,7 @@ const Header = () => {
           <a href="https://linkedin.com" aria-label="LinkedIn" className="text-[#0b2e55] hover:text-[#6eb8f5]">
             <img src="linkdin.png" alt="LinkedIn" className="w-[36px] h-[36px]" />
           </a>
-          <a href="/curriculo.pdf" download className="h-[40px] px-6 bg-[#2196f3] hover:bg-[#6eb8f5] text-white font-semibold rounded-lg flex items-center">Baixar Currículo</a>
+          <a href="/curriculo.pdf" download className="h-[20px] px-6 bg-[#2196f3] hover:bg-[#6eb8f5] text-white font-semibold rounded-lg flex items-center">Baixar Currículo</a>
         </div>
       </Container>
     </header>
@@ -48,7 +48,7 @@ const Hero = () => {
         <div className="relative flex items-center justify-center">
           <div className="relative">
             {/* Foto circular */}
-            <img src="/images/photo.jpg" alt="Foto" className="w-[320px] h-[320px] rounded-full object-cover mx-auto border-2 border-[#8b4513]" />
+            <img src="heroimg.png" alt="Foto" className="w-[320px] h-[320px] rounded-full object-cover mx-auto border-2 border-[#8b4513]" />
             
             {/* Elementos gráficos posicionados como na imagem 2 */}
             {/* Linhas verticais no canto inferior esquerdo */}
