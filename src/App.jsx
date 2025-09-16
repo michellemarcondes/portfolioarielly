@@ -32,7 +32,7 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="w-full bg-[#e8f5ff]" style={{ height: 720 }}>
+    <section id="home" className="w-full bg-[#e8f5ff] -mt-120" style={{ height: 720 }}> {/* adicionado -mt-5 para aproximar 20px */}
       <Container className="grid grid-cols-1 lg:grid-cols-2 h-full">
         <div className="flex flex-col justify-center px-0">
           <p className="text-2xl text-[#0b2e55] mb-3">OLÁ, EU SOU:</p>
