@@ -32,7 +32,7 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="w-full bg-[#e8f5ff] -mt-120" style={{ height: 720 }}> {/* adicionado -mt-5 para aproximar 20px */}
+    <section id="home" className="w-full bg-[#e8f5ff] -mt-[120px]" style={{ height: 720 }}> {/* adicionado -mt-5 para aproximar 20px */}
       <Container className="grid grid-cols-1 lg:grid-cols-2 h-full">
         <div className="flex flex-col justify-center px-0">
           <p className="text-2xl text-[#0b2e55] mb-3">OLÁ, EU SOU:</p>
@@ -74,10 +74,19 @@ const SobreMim = () => {
   return (
     <section id="sobre" className="min-h-screen py-20 bg-[#e8f5ff]">
       <Container>
-        <SectionTitle>sobre mim</SectionTitle>
+        <SectionTitle>Sobre mim</SectionTitle>
         <p className="max-w-[680px] text-lg text-[#0b2e55] leading-relaxed mb-[60px]">
-          Sou um Product Designer focado em criar experiências funcionais e esteticamente agradáveis,
-          combinando pesquisa, prototipação e validações com usuários.
+          Meu nome é Arielly Rodrigues Aparecida de Souza, sou de Campinas – SP, e me considero uma pessoa dedicada, comunicativa e muito organizada. Gosto de estar sempre disponível para ajudar, porque acredito que empatia e respeito fazem toda a diferença no convívio com as pessoas.
+
+          Nos meus momentos livres, gosto de ler a Bíblia, passear, caminhar e cozinhar. A leitura e a culinária são hobbies que me trazem paz e também me ensinam a ter paciência e criatividade.
+
+          O que mais me motiva é poder dar orgulho aos meus pais e conquistar, com esforço, uma vida melhor para mim e para minha família. Entre as minhas conquistas até aqui, destaco a oportunidade de estudar na Fundação Bradesco, servir no ministério infantil da minha igreja e realizar sonhos com meu próprio trabalho, como comprar o meu celular. Cada passo foi importante para me fortalecer e mostrar que dedicação traz resultados.
+
+          Tenho como objetivo a longo prazo me tornar chefe de enfermagem em um grande hospital. Quero cuidar das pessoas com empatia e firmeza, unindo profissionalismo e humanidade. Me inspiro muito em pessoas gentis e bondosas, e tento levar esse exemplo para o meu dia a dia.
+
+          Prefiro trabalhar de forma individual, pois me sinto mais organizada assim, mas valorizo muito a colaboração e acredito no poder do respeito e da entrega em qualquer ambiente. Quando enfrento desafios, paro, reflito e busco soluções práticas, sempre tentando aprender com cada situação.
+
+          Acredito que o que me diferencia é a forma como enxergo os outros: presto mais atenção nas atitudes do que nas palavras. Procuro ser autêntica, simpática, altruísta e dedicada. Quero ser vista como alguém em quem se pode confiar — uma pessoa verdadeira, empática e que se dedica de coração ao que faz.
         </p>
         <div className="space-y-8">
           {[{ ano: '2023', desc: 'Senior Product Designer na Empresa X.' }, { ano: '2021', desc: 'Product Designer na Startup Y.' }, { ano: '2019', desc: 'UX/UI Designer Freelancer.' }].map((item) => (
@@ -105,55 +114,65 @@ const useEscToClose = (onClose) => {
 
 const Carousel = ({ items, onOpen }) => {
   const [index, setIndex] = useState(0)
-  const touchStartX = useRef(null)
 
-  const prev = () => setIndex((i) => (i - 1 + items.length) % items.length)
-  const next = () => setIndex((i) => (i + 1) % items.length)
-
-  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX }
-  const onTouchEnd = (e) => {
-    if (touchStartX.current == null) return
-    const dx = e.changedTouches[0].clientX - touchStartX.current
-    if (dx > 50) prev()
-    if (dx < -50) next()
-    touchStartX.current = null
-  }
+  const next = () => setIndex((prev) => (prev + 1) % items.length)
+  const prev = () => setIndex((prev) => (prev - 1 + items.length) % items.length)
 
   return (
-    <div className="relative w-full h-[420px]">
-      <div className="absolute left-10 top-[90%] md:top-1/2 -translate-y-1/2 z-10">
-        <button onClick={prev} className="w-12 h-12 rounded-full bg-[#2196f3] hover:bg-[#6eb8f5] text-white shadow-xl flex items-center justify-center">{'<'}</button>
-      </div>
-      <div className="absolute right-10 top-[90%] md:top-1/2 -translate-y-1/2 z-10">
-        <button onClick={next} className="w-12 h-12 rounded-full bg-[#2196f3] hover:bg-[#6eb8f5] text-white shadow-xl flex items-center justify-center">{'>'}</button>
-      </div>
-      <div className="w-full h-full overflow-hidden" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="flex">
-            {items[index].map((item, i) => (
-              <div
-                key={i}
-                className="w-full h-auto md:w-[540px] md:h-[360px] mx-5 cursor-pointer"
-                onClick={() => onOpen(item)}
-              >
-                <div className="w-full h-full bg-white rounded-lg shadow-lg border-2 border-[#c3e3fd] flex flex-col items-center justify-center p-8 hover:shadow-xl transition-shadow">
-                  <div className="w-16 h-16 bg-[#2196f3] rounded-full flex items-center justify-center mb-4">
-                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold text-[#0b2e55] mb-2">{item.alt}</h3>
-                  <p className="text-sm text-[#0b2e55] text-center">{item.caption}</p>
-                  <div className="mt-4 text-xs text-[#2196f3] font-medium">Clique para visualizar</div>
-                </div>
-              </div>
-            ))}
+    <div className="relative w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {items[index].map((item, idx) => (
+          <div
+            key={idx}
+            onClick={() => onOpen(item)}
+            className="cursor-pointer bg-white rounded-2xl shadow-md p-4 hover:shadow-xl transition flex flex-col items-center"
+          >
+            {/* Se for Projeto (tem descricao) */}
+            {item.descricao ? (
+              <>
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-56 object-cover rounded-xl mb-3"
+                />
+                <h3 className="text-lg font-semibold text-[#0b2e55] text-center">
+                  {item.titulo}
+                </h3>
+              </>
+            ) : (
+              // Se for Certificado (tem pdf mas não descricao)
+              <>
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-40 object-contain mb-3"
+                />
+                <p className="text-sm text-[#0b2e55] text-center">
+                  {item.caption}
+                </p>
+              </>
+            )}
           </div>
-        </div>
+        ))}
       </div>
+
+      {/* Botões de navegação */}
+      <button
+        onClick={prev}
+        className="absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white shadow p-2 rounded-full hover:bg-gray-100"
+      >
+        ‹
+      </button>
+      <button
+        onClick={next}
+        className="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-white shadow p-2 rounded-full hover:bg-gray-100"
+      >
+        ›
+      </button>
     </div>
   )
 }
+
 
 const ModalImage = ({ item, onClose }) => {
   useEscToClose(onClose)
@@ -183,16 +202,154 @@ const ModalPdf = ({ item, onClose }) => {
   )
 }
 
+// ... (todo o código que você já tem acima continua igual até o Carousel)
+
+const ModalProjeto = ({ item, onClose }) => {
+  useEscToClose(onClose)
+  if (!item) return null
+  return (
+    <div
+      className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-2xl max-w-2xl w-full p-6 relative shadow-lg overflow-y-auto max-h-[80vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-2xl"
+          onClick={onClose}
+        >
+          ✕
+        </button>
+        <img
+          src={item.src}
+          alt={item.titulo}
+          className="w-full h-64 object-cover rounded-xl mb-4"
+        />
+        <h2 className="text-2xl font-bold text-[#0b2e55] mb-4">{item.titulo}</h2>
+        <p className="text-gray-700 whitespace-pre-line leading-relaxed">
+          {item.descricao}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 const Projetos = () => {
   const [openItem, setOpenItem] = useState(null)
+
+  // agora cada item tem titulo + descricao completa
   const slides = [
     [
-      { src: '/projects/p1a.jpg', alt: 'Projeto 1 A', caption: 'Projeto 1 — Tela A com descrição detalhada.' },
-      { src: '/projects/p1b.jpg', alt: 'Projeto 1 B', caption: 'Projeto 1 — Tela B com destaques e resultados.' },
+      {
+        src: "/projects/p1a.jpg",
+        titulo: "Smart Food Cart",
+        alt: "Smart Food Cart",
+        descricao: `Esse foi um dos projetos mais desafiadores... 
+
+✨ Aprendizados:
+- Trabalho em equipe
+- Criação de identidade visual
+- Programação em Arduino
+- Apresentação de soluções inovadoras`
+      },
+      {
+        src: "/projects/p2a.jpg",
+        titulo: "Projeto Buzzer com Arduino",
+        alt: "Projeto Buzzer com Arduino",
+        descricao: `Nesse projeto montei um circuito simples com buzzer e botão. 
+
+✨ Aprendizados:
+- Uso de entradas e saídas digitais
+- Montagem em protoboard
+- Resistores para proteção`
+      },
     ],
     [
-      { src: '/projects/p2a.jpg', alt: 'Projeto 2 A', caption: 'Projeto 2 — Estudos e protótipos.' },
-      { src: '/projects/p2b.jpg', alt: 'Projeto 2 B', caption: 'Projeto 2 — Telas finais.' },
+      {
+        src: "/projects/p3a.jpg",
+        titulo: "Cálculo de Média em C",
+        alt: "Cálculo de Média em C",
+        descricao: `Um dos primeiros programas em C: calcular média de 3 notas. 
+
+✨ Aprendizados:
+- Estrutura básica de programas em C
+- Manipulação de variáveis float
+- Entrada e saída de dados`
+      },
+      {
+        src: "/projects/p4a.jpg",
+        titulo: "Carrinho Robótico (Baymax)",
+        alt: "Carrinho Robótico (Baymax)",
+        descricao: `Robô móvel em grupo, controlado por Arduino + Bluetooth. 
+
+✨ Aprendizados:
+- Controle de motores
+- Comunicação Bluetooth
+- Trabalho em equipe`
+      },
+    ],
+    [
+      {
+        src: "/projects/p5a.jpg",
+        titulo: "Catraca com Sensor Ultrassônico",
+        alt: "Catraca com Sensor Ultrassônico",
+        descricao: `Simulação de catraca automática com sensor e servo. 
+
+✨ Aprendizados:
+- Sensor ultrassônico
+- Controle de servo motor
+- Automação prática`
+      },
+      {
+        src: "/projects/p6a.jpg",
+        titulo: "Jogo das Flores em C",
+        alt: "Jogo das Flores em C",
+        descricao: `Programa criativo em C para alocar flores em campo. 
+
+✨ Aprendizados:
+- Estruturas de repetição
+- Condicionais
+- Arrays`
+      },
+    ],
+    [
+      {
+        src: "/projects/p7a.jpg",
+        titulo: "Verificação de Número Primo em C",
+        alt: "Número Primo em C",
+        descricao: `Programa para verificar se número é primo. 
+
+✨ Aprendizados:
+- Estrutura de repetição
+- Operador %
+- Otimização de algoritmos`
+      },
+      {
+        src: "/projects/p8a.jpg",
+        titulo: "Calculadora em C",
+        alt: "Calculadora em C",
+        descricao: `Calculadora básica com 4 operações e validações. 
+
+✨ Aprendizados:
+- Operações aritméticas
+- Estruturas condicionais
+- Tratamento de erros`
+      },
+    ],
+    [
+      {
+        src: "/projects/p9a.jpg",
+        titulo: "Piano com Arduino",
+        alt: "Piano com Arduino",
+        descricao: `Piano eletrônico com botões + buzzer no Arduino. 
+
+✨ Aprendizados:
+- Sons com buzzer
+- Entradas digitais múltiplas
+- Criatividade e música com tecnologia`
+      },
     ],
   ]
 
@@ -200,12 +357,13 @@ const Projetos = () => {
     <section id="projetos" className="min-h-screen py-20 bg-[#e8f5ff]">
       <Container>
         <SectionTitle>projetos</SectionTitle>
-        <Carousel items={slides} onOpen={(img) => setOpenItem(img)} />
-        <ModalImage item={openItem} onClose={() => setOpenItem(null)} />
+        <Carousel items={slides} onOpen={(item) => setOpenItem(item)} />
+        <ModalProjeto item={openItem} onClose={() => setOpenItem(null)} />
       </Container>
     </section>
   )
 }
+
 
 const Certificados = () => {
   const [openItem, setOpenItem] = useState(null)
